@@ -13,6 +13,7 @@ export default {
       },
       fontSize: {
         'priority-size': "10.052rem",
+        'priority-size-xl': "25.052rem",
       },
       fontWeight: {
         'priority-font': '700',
