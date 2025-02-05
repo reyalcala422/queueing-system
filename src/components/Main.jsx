@@ -1,6 +1,7 @@
 
 import drmc from '../assets/pictures/image1.png'
 import React, { useEffect, useRef, useState } from 'react';
+import sound from '../assets/sound/sound1.mp3';
 import { useQueueState } from 'rooks';
 export function Main() {
     const userButtonsRef = useRef([
@@ -40,6 +41,7 @@ export function Main() {
             setPreviousNumber(currentNumber);
             setCurrentNumber(prev => prev + 1);
             setUpcomingNumber(length > 0 ? list[0]?.id : null);
+
         } else {
             console.error(`User with ID ${userId} not found`);
         }
@@ -56,18 +58,23 @@ export function Main() {
         switch (event.key) {
             case '1':
                 addToQueue(1);
+                play();
                 break;
             case '2':
                 addToQueue(2);
+                play();
                 break;
             case '3':
                 addToQueue(3);
+                play();
                 break;
             case '4':
                 addToQueue(4);
+                play();
                 break;
             case '0':
                 resetFunc(0);
+
                 break;
             default:
                 return;
@@ -92,6 +99,10 @@ export function Main() {
         };
     }, []);
 
+    function play() {
+        new Audio(sound).play();
+    }
+
     return (
         <div>
             {/* <div className="bg-[url('./src/assets/pictures/image1.png')]"> */}
@@ -105,10 +116,10 @@ export function Main() {
                     stroke-sub-text xl:-mt-20 xl:text-4xl'>Current Number: </p>
                     <p className='text-2xl font-semibold stroke-2
                     stroke-sub-text xl:text-4xl'>Previous Number:
-                        <span className='text-[#6EACDA] text-5xl xl:text-7xl'>{previousNumber}</span></p>
+                        <span className='text-[#6EACDA] text-5xl xl:text-6xl'>{previousNumber}</span></p>
                     {/* <p>Upcoming Number: {upcomingNumber || 'Calculating...'}</p> */}
                 </div>
-                <div className='flex justify-center'>
+                <div className='flex justify-center mt-6'>
                     <div className='grid grid-rows-2 xl:grid-cols-4'>
                         {/* <button onClick={() => addToQueue(1)}
                             className='active:text-black 
@@ -120,36 +131,40 @@ export function Main() {
                         hover:bg-cyan-800  text-white w-72 mt-2 font-bold
                         hover:text-sub-text' autoFocus="true">Window 1</button> */}
 
-                        <button onClick={() => { addToQueue(1); handleButtonClick(1) }}
+                        <button onClick={() => { addToQueue(1); handleButtonClick(1); play() }}
                             className={`font-semibold text-white transition ease-in-out
-                            delay-150 hover:-translate-y-1 hover:scale-110 duration-0 text-3xl 
-                            bg-buttons px-2 py-3 w-72 ml-3
+                            delay-150 hover:-translate-y-1
+                            hover:scale-110 duration-0 text-3xl 
+                            bg-buttons px-3 py-4 w-72 ml-5
                             fon-bold hover:text-sub-text rounded-lg
-                                ${activeButton === 1 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 text-black '
+                            ${activeButton === 1 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 animate-bounce ring-offset-2 ring-8'
                                     : 'bg-blue-500'}`} autoFocus="true">Window 1</button>
 
-                        <button onClick={() => { addToQueue(2); handleButtonClick(2) }}
+                        <button onClick={() => { addToQueue(2); handleButtonClick(2); play() }}
                             className={`font-semibold text-white transition ease-in-out
-                            delay-150 hover:-translate-y-1 hover:scale-110 duration-0 text-3xl 
-                            bg-buttons px-2 py-3 w-72 ml-3
+                            delay-150 hover:-translate-y-1
+                            hover:scale-110 duration-0 text-3xl 
+                            bg-buttons px-3 py-4 w-72 ml-5
                             fon-bold hover:text-sub-text rounded-lg
-                                ${activeButton === 2 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 '
+                            ${activeButton === 2 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 animate-bounce ring-offset-2 ring-8 '
                                     : 'bg-blue-500'}`} autoFocus="true">Window 2</button>
 
-                        <button onClick={() => { addToQueue(3); handleButtonClick(3) }}
+                        <button onClick={() => { addToQueue(3); handleButtonClick(3); play() }}
                             className={`font-semibold text-white transition ease-in-out
-                            delay-150 hover:-translate-y-1 hover:scale-110 duration-0 text-3xl 
-                            bg-buttons px-2 py-3 w-72 ml-3
+                            delay-150 hover:-translate-y-1
+                            hover:scale-110 duration-0 text-3xl 
+                            bg-buttons px-3 py-4 w-72 ml-5
                             fon-bold hover:text-sub-text rounded-lg
-                                ${activeButton === 3 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 '
+                            ${activeButton === 3 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 animate-bounce ring-offset-2 ring-8 '
                                     : 'bg-blue-500'}`} autoFocus="true">Window 3</button>
 
-                        <button onClick={() => { addToQueue(4); handleButtonClick(4) }}
+                        <button onClick={() => { addToQueue(4); handleButtonClick(4); play() }}
                             className={`font-semibold text-white transition ease-in-out
-                            delay-150 hover:-translate-y-1 hover:scale-110 duration-0 text-3xl 
-                            bg-buttons px-2 py-3 w-72 ml-3
+                            delay-150 hover:-translate-y-1
+                            hover:scale-110 duration-0 text-3xl 
+                            bg-buttons px-3 py-4 w-72 ml-5
                             fon-bold hover:text-sub-text rounded-lg
-                                ${activeButton === 4 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 '
+                            ${activeButton === 4 ? 'bg-cyan-800 mt-2 underline underline-offset-8 hover:-translate-y-1 hover:scale-110 animate-bounce ring-offset-2 ring-8 '
                                     : 'bg-blue-500'}`} autoFocus="true">Window 4</button>
 
 
